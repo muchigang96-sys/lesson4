@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
+    <title>Оформление доставки</title>
+
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/base_adaptive.css" />
+
+    <link rel="stylesheet" href="styles/order.css" />
+    <link rel="stylesheet" href="styles/order_adaptive.css" />
+
+    <script src="https://testologia.ru/ymc_min.js" data-apikey="8b6db56c-0268-4359-9dbd-eb7afba48eb3" data-suggest-apikey="cebbba16-4373-4866-bddd-8ca182d03bf5"></script>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <header class="header">
+        <a class="header-brand" href="./index.html">
+            <div class="header-logo">D</div>
+            <div class="header-title">Dostaffkin</div>
+        </a>
+        <nav class="header-menu">
+            <a class="header-link" href="#">Оформить <span>доставку</span></a>
+            <a class="header-link" href="./track.html">Отследить <span>посылку</span></a>
+        </nav>
+    </header>
+
+    <aside class="main" id="sidebar">
+        <div class="main-header">
+            <div class="main-title">Оформление доставки</div>
+            <div class="main-text">Выберите параметры для расчета отправления</div>
+        </div>
+        <div class="main-content">
+            <div class="main-route">
+                <div class="main-block-title">Маршрут</div>
+                <div class="main-fields">
+                    <div class="main-field" id="fromField">
+                        <div class="main-pin"></div>
+                        <input id="from" placeholder="Откуда: начните вводить адрес" autocomplete="off" />
+                        <div class="main-ac" id="fromAc" role="listbox" aria-label="Подсказки адресов"></div>
+                    </div>
+
+                    <div class="main-field" id="toField">
+                        <div class="main-pin"></div>
+                        <input id="to" placeholder="Куда: начните вводить адрес" autocomplete="off" />
+                        <div class="main-ac" id="toAc" role="listbox" aria-label="Подсказки адресов"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-package">
+                <div class="main-block-title">Размер посылки</div>
+
+                <div class="main-sizes">
+                    <div class="main-size-card is-active" data-value="xs">
+                        <div class="main-size-top">
+                            <div class="main-size-label">XS</div>
+                            <div class="main-size-rate">9 ₽/км</div>
+                        </div>
+                        <div class="main-size-media">
+                            <img src="images/sizes/xs.png" alt="Короб XS" />
+                        </div>
+                        <div class="main-size-description">17×12×9 см,<br>до 0.5 кг</div>
+                    </div>
+
+                    <div class="main-size-card" data-value="s">
+                        <div class="main-size-top">
+                            <div class="main-size-label">S</div>
+                            <div class="main-size-rate">13 ₽/км</div>
+                        </div>
+                        <div class="main-size-media">
+                            <img src="images/sizes/s.png" alt="Короб S" />
+                        </div>
+                        <div class="main-size-description">23×19×10 см,<br>до 2 кг</div>
+                    </div>
+
+                    <div class="main-size-card" data-value="m">
+                        <div class="main-size-top">
+                            <div class="main-size-label">M</div>
+                            <div class="main-size-rate">20 ₽/км</div>
+                        </div>
+                        <div class="main-size-media">
+                            <img src="images/sizes/m.png" alt="Короб M" />
+                        </div>
+                        <div class="main-size-description">33×25×15 см,<br>до 5 кг</div>
+                    </div>
+
+                    <div class="main-size-card" data-value="l">
+                        <div class="main-size-top">
+                            <div class="main-size-label">L</div>
+                            <div class="main-size-rate">27 ₽/км</div>
+                        </div>
+                        <div class="main-size-media">
+                            <img src="images/sizes/l.png" alt="Короб L" />
+                        </div>
+                        <div class="main-size-description">31×25×38 см,<br>до 12 кг</div>
+                    </div>
+
+                    <div class="main-size-card" data-value="xl">
+                        <div class="main-size-top">
+                            <div class="main-size-label">XL</div>
+                            <div class="main-size-rate">35 ₽/км</div>
+                        </div>
+                        <div class="main-size-media">
+                            <img src="images/sizes/xl.png" alt="Короб XL" />
+                        </div>
+                        <div class="main-size-description">60×35×30 см,<br>до 18 кг</div>
+                    </div>
+
+                    <div class="main-size-card" data-value="max">
+                        <div class="main-size-top">
+                            <div class="main-size-label">MAX</div>
+                            <div class="main-size-rate">70 ₽/км</div>
+                        </div>
+                        <div class="main-size-media main-size-media-palleta">
+                            <img src="images/sizes/max.png" alt="Паллета" />
+                        </div>
+                        <div class="main-size-description">120×120×80 см,<br>до 200 кг</div>
+                    </div>
+                </div>
+            </div>
+            <fieldset class="main-speed">
+                <legend class="main-block-title">Скорость доставки</legend>
+                <div class="main-speed-options">
+                    <label class="main-speed-option">
+                        <input type="radio" name="deliverySpeed" value="regular" checked />
+                        <span class="main-speed-button">
+                            <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+                                <path d="M5 33V10a3 3 0 0 1 3-3h19a3 3 0 0 1 3 3v23M30 14h7l7 12v7h-5M5 33h5M20 33h9" />
+                                <path d="M6 25h23" />
+                                <circle cx="15" cy="34" r="5" />
+                                <circle cx="34" cy="34" r="5" />
+                            </svg>
+                            <span>Обычная</span>
+                        </span>
+                    </label>
+                    <label class="main-speed-option">
+                        <input type="radio" name="deliverySpeed" value="priority" />
+                        <span class="main-speed-button">
+                            <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+                                <path d="M17 29C20 13 30 5 43 5c0 13-8 23-24 26l-2-2Z" />
+                                <circle cx="33" cy="15" r="4" />
+                                <path d="M21 16h-9L5 29l12-1M31 27v9L18 43l1-12M12 34c-5 1-7 5-7 9 4 0 8-2 9-7" />
+                            </svg>
+                            <span>Приоритетная</span>
+                        </span>
+                    </label>
+                </div>
+            </fieldset>
+            <div class="main-toll" id="tollOptions" hidden>
+                <label class="main-toll-check">
+                    <input id="tollSection" type="checkbox" />
+                    <span>Маршрут проходит по участку ПК-5 — М-10 «Россия»</span>
+                </label>
+                <div id="tollCategoryField" class="main-toll-category" hidden>
+                    <label for="tollCategory" class="main-block-title">Категория транспортного средства</label>
+                    <select id="tollCategory" disabled>
+                        <option value="">Выберите категорию ТС</option>
+                        <option value="1">1 категория — максимум 2 278 ₽</option>
+                        <option value="2">2 категория — максимум 3 189 ₽</option>
+                        <option value="3">3 категория — максимум 4 262 ₽</option>
+                        <option value="4">4 категория — максимум 6 513 ₽</option>
+                    </select>
+                </div>
+                <p class="main-toll-note">Участок отмечается вручную. В расчёт включается указанная максимальная стоимость проезда, а не актуальный тариф на дату поездки.</p>
+            </div>
+            <p id="deliveryNotice" class="main-delivery-notice" role="status" aria-live="polite"></p>
+            <div class="main-calculate-block">
+                <button id="calc" class="button calculate-button" type="button" disabled>Рассчитать</button>
+            </div>
+            <div class="main-result" id="result">
+                <div class="main-result-title">Расчеты вашего заказа</div>
+                <div class="main-result-lines">
+                    <div class="main-result-line"><span>Расстояние</span><span id="distanceValue">—</span></div>
+                    <div class="main-result-line"><span>Доставим через</span><span id="durationValue">—</span></div>
+                    <div class="main-result-line"><span>Тариф</span><span id="rateValue">—</span></div>
+                    <div class="main-result-line"><span>Способ доставки</span><span id="speedValue">—</span></div>
+                    <div class="main-result-line"><span>Стоимость доставки</span><span id="baseCostValue">—</span></div>
+                    <div class="main-result-line"><span>Платный участок (макс.)</span><span id="tollValue">—</span></div>
+                </div>
+                <div class="main-price">
+                    <div class="main-price-label">Итого</div>
+                    <div class="main-price-value" id="totalValue">—</div>
+                </div>
+            </div>
+            <div class="main-order-box">
+                <div class="main-order-form" id="orderForm">
+                    <div class="main-order-title">Оформление доставки</div>
+                    <div class="main-block-info-row">
+                        <div class="main-block-title">Контакты</div>
+                        <div class="order-fields">
+                            <div class="main-field">
+                                <input id="customerName" placeholder="Ваше имя" autocomplete="off" />
+                            </div>
+                            <div class="main-field">
+                                <input id="customerPhone" placeholder="Ваш телефон" autocomplete="off"
+                                    inputmode="tel" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-block-info-row extra-info">
+                        <div class="main-block-title">Дополнительная информация</div>
+                        <div class="main-field textarea">
+                            <textarea id="comment" placeholder="Детали доставки и комментарии"></textarea>
+                        </div>
+                    </div>
+                    <button id="submit" class="button main-submit-request" type="button" disabled>Отправить
+                        заявку
+                    </button>
+                </div>
+
+                <div class="main-order-success" id="orderSuccess">
+                    <div class="main-success-icon">✓</div>
+                    <div class="main-success-title">Заявка отправлена!</div>
+                    <div class="main-success-title">Номер отправления – <span id="orderId"></span></div>
+                    <div class="main-success-subtitle">Мы скоро свяжемся с вами</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <script src="scripts/order.js"></script>
+</body>
+
+</html>
